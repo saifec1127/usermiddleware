@@ -1,19 +1,21 @@
-let users = [];
+const mongoose = require('mongoose');
 
-const find = () => {
-    return new Promise((resolve) => {
-        resolve(users);
-    });
-};
+const userSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true,
+    },
+    age: {
+        type: Number,
+        required: true,
+    },
+});
 
-const create = (user) => {
-    return new Promise((resolve) => {
-        users.push(user);
-        resolve(user);
-    });
-};
+const User = mongoose.model('User', userSchema);
 
-module.exports = {
-    find,
-    create,
-};
+module.exports = User;
