@@ -5,6 +5,7 @@ const helmet = require('helmet');
 const connectDB = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
 const { errorHandler } = require('./middlewares/ errorMiddleware');
+const platterRouter = require('./routes/platterRoutes');
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ app.use(cors());
 connectDB();
 
 app.use('/api/users', userRoutes);
+app.use('/api/platters', platterRouter )
 
 app.use(errorHandler);
 
