@@ -6,6 +6,8 @@ const connectDB = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
 const { errorHandler } = require('./middlewares/ errorMiddleware');
 const platterRouter = require('./routes/platterRoutes');
+//const dailyUpdatesRouter = require('./routes/dailyUpdatesRoutes');
+const dailyUpdatesRouter = require('./routes/dailyUpdatesRoutes'); 
 
 dotenv.config();
 
@@ -20,6 +22,8 @@ connectDB();
 
 app.use('/api/users', userRoutes);
 app.use('/api/platters', platterRouter )
+//app.use('/api/dailyDatail', dailyUpdatesRouter )
+app.use('/api/dailyUpdates', dailyUpdatesRouter); // Correct route path
 
 app.use(errorHandler);
 
